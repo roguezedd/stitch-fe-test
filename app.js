@@ -5,12 +5,12 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
+var debug = require('debug')('stitchapp');
+
 var routes = require('./routes/index');
 var shopify = require('./routes/shopify');
 
 var app = express();
-
-var debug = require('debug')('stitchapp');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -63,5 +63,5 @@ app.use(function(err, req, res, next) {
 module.exports = app;
 
 var server = app.listen(app.get('port'), function() {
-    debug('Express server listening on port ' + server.address().port);
+    console.log('Express server listening on port ' + server.address().port);
 });
