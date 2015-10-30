@@ -10,6 +10,8 @@ var shopify = require('./routes/shopify');
 
 var app = express();
 
+var debug = require('debug')('stitchapp');
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
@@ -58,6 +60,8 @@ app.use(function(err, req, res, next) {
     });
 });
 
-app.listen(app.get('port'));
-
 module.exports = app;
+
+var server = app.listen(app.get('port'), function() {
+    debug('Express server listening on port ' + server.address().port);
+});
