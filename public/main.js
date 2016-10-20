@@ -3,6 +3,7 @@ import angular from 'angular';
 import 'angular-ui-router';
 import 'angular-ui-bootstrap';
 import './modules/products/module';
+import './modules/details/module';
 
 
 /**
@@ -18,7 +19,8 @@ import './modules/products/module';
 let AppModule = angular.module('app', [
 	'ui.router',
 	'ui.bootstrap',
-  'ProductModule'
+  'ProductModule',
+	'DetailModule'
 ]).config(['$locationProvider', '$httpProvider', '$urlRouterProvider', '$stateProvider',
 	($locationProvider,	$httpProvider,	$urlRouterProvider,	$stateProvider) => {
 		// Batch multiple $http requests around the same time into one $digest

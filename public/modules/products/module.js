@@ -13,14 +13,14 @@ let ProductModule = angular.module('ProductModule', [
 	.service('ProductService', ProductService)
 	// Routes
 	.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
-		
+
 
 		$stateProvider
 				.state('product', {
-					url: '/products',
+					url: '/product',
 					controller: 'ProductController',
 					templateUrl: path + 'view/product.html',
-					controllerAs: 'p'
+					controllerAs: 'product'
 				});
 	}]);
 
