@@ -3,15 +3,8 @@ import angular from 'angular';
 import 'angular-ui-router';
 import 'angular-ui-bootstrap';
 import './modules/products/module';
+import './modules/details/module';
 
-// Application Modules
-/*import './modules/healthCheck/module';
-import './modules/search/module';
-import './modules/summary/module';
-import './modules/engine/module';
-import './modules/common/module';
-import './modules/workscopeNav/module';
-import 'hubs/ng-apphub-service';*/
 
 /**
  * @name AppModule
@@ -26,7 +19,8 @@ import 'hubs/ng-apphub-service';*/
 let AppModule = angular.module('app', [
 	'ui.router',
 	'ui.bootstrap',
-  'ProductModule'
+  'ProductModule',
+	'DetailModule'
 ]).config(['$locationProvider', '$httpProvider', '$urlRouterProvider', '$stateProvider',
 	($locationProvider,	$httpProvider,	$urlRouterProvider,	$stateProvider) => {
 		// Batch multiple $http requests around the same time into one $digest

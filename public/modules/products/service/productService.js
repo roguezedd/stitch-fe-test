@@ -21,5 +21,4 @@ class ProductService {
 		}
   }
 ProductService.$inject = ['$log', '$http', '$q'];
-// Export an instance
 export default ProductService;

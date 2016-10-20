@@ -3,8 +3,10 @@
   <div class="row">
     <div class="col-sm-3 col-lg-2">
       <nav class="navbar navbar-default navbar-fixed-side">
-        <ul>
-          <li ng-repeat="product in p.products">{{product.title}}
+        <ul style="list-style-type:none;">
+          <li id="product" style="padding:1rem;cursor:pointer;" ui-sref="product.detail"
+          ng-repeat="product in product.products">{{product.title}}
+
         </li>
         </ul>
       </nav>
