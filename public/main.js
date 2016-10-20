@@ -4,14 +4,6 @@ import 'angular-ui-router';
 import 'angular-ui-bootstrap';
 import './modules/products/module';
 
-// Application Modules
-/*import './modules/healthCheck/module';
-import './modules/search/module';
-import './modules/summary/module';
-import './modules/engine/module';
-import './modules/common/module';
-import './modules/workscopeNav/module';
-import 'hubs/ng-apphub-service';*/
 
 /**
  * @name AppModule
