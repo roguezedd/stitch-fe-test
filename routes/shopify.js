@@ -2,9 +2,9 @@ var express = require('express');
 var request = require('request');
 var router = express.Router();
 
-var API_KEY = 'fe47169d605a535fd4ccd2f850794a4f';
-var PASSWD = '9d5283f93b55448ca33680f28bfc2210';
-var STORE_NAME = 'levisproxytest';
+var API_KEY = 'c703c03944b7928c3c4c40fcd8fe54da';
+var PASSWD = '2569347cd7d2f04406a5ef164fb087f5';
+var STORE_NAME = 'stich-labs-jai';
 
 router.get('/get', function(req, res) {
 
