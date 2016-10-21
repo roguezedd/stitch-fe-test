@@ -1,4 +1,15 @@
-
-<div>Detail
-  <h1 style="width: 500px;">Helllo Details</h1>
-</div>
+<style>
+.gridStyle {
+    border: 1px solid rgb(212,212,212);
+    width: 500px;
+    height: 300px;
+}
+button {
+  display: inline;
+}
+</style>
+<h3>{{detail.detail.title}}</h3>
+<pre ng-repeat="(key,val) in detail.detail">{{key}} : {{detail.detail[key]}}
+<button>Edit</button>
+</pre>
+<!--<div class="gridStyle" ng-grid="gridOptions"></div> -->

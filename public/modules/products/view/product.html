@@ -4,12 +4,12 @@
     <div class="col-sm-3 col-lg-2">
       <nav class="navbar navbar-default navbar-fixed-side">
         <ul style="list-style-type:none;">
-          <li id="product" style="padding:1rem;cursor:pointer;" ui-sref="product.detail"
+          <li id="product" style="padding:1rem;cursor:pointer;" ui-sref="product.detail({id:product.id})"
           ng-repeat="product in product.products">{{product.title}}
-
-        </li>
+          </li>
         </ul>
       </nav>
     </div>
+    <div class="col-sm-6" role="detail" ui-view></div>
   </div>
 </div>

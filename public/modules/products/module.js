@@ -18,6 +18,7 @@ let ProductModule = angular.module('ProductModule', [
 		$stateProvider
 				.state('product', {
 					url: '/product',
+					'abstract': true,
 					controller: 'ProductController',
 					templateUrl: path + 'view/product.html',
 					controllerAs: 'product'
