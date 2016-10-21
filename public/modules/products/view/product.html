@@ -1,10 +1,10 @@
-
+<link rel="stylesheet" type="text/css" href="../../modules/products/style/product.css"/>
 <div class="container-fluid">
   <div class="row">
     <div class="col-sm-3 col-lg-2">
       <nav class="navbar navbar-default navbar-fixed-side">
         <ul style="list-style-type:none;">
-          <li id="product" style="padding:1rem;cursor:pointer;" ui-sref="product.detail({id:product.id})"
+          <li id="product" ui-sref="product.detail({id:product.id})"
           ng-repeat="product in product.products">{{product.title}}
           </li>
         </ul>
