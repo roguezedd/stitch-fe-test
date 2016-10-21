@@ -1,5 +1,17 @@
+public/.sass-cache/*
 node_modules
 *.log
 .DS_Store
 .idea
 public/.sass-cache/*
+node_modules
+public/jspm_packages
+public/bower_components
+public/build.js
+public/build.js.map
+dist
+docs
+.idea
+*.iml
+.project
+npm-debug.log

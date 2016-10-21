@@ -1,0 +1,26 @@
+{
+  "name": "stitchapp",
+  "description": "",
+  "main": "index.html",
+  "authors": [
+    "mailjai@gmail.com"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "stitch-labs-jaibhati"
+  ],
+  "homepage": "https://github.com/roguezedd/stitch-fe-test",
+  "moduleType": [],
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap":"https://github.com/twbs/bootstrap.git",
+    "bootstrap-side-navbar" : "https://github.com/samrayner/bootstrap-side-navbar"
+  }
+}
