@@ -7,15 +7,11 @@ var del = require('del'),
 	gulp = require('gulp'),
 	babel = require('gulp-babel'),
 	bower = require('gulp-bower'),
-	eslint = require('gulp-eslint'),
-	ngdocs = require('gulp-ngdocs'),
 	nodemon = require('gulp-nodemon'),
 	sass = require('gulp-sass'),
 	shell = require('gulp-shell'),
-	karmaServer = require('karma').Server,
-	runSequence = require('run-sequence'),
-	vulcanize = require('gulp-vulcanize'),
-	rename = require('gulp-rename');
+	karmaServer = require('karma').Server;
+
 
 //=============================================
 //            DECLARE PATHS
@@ -91,21 +87,12 @@ gulp.task('sass', function(cb){
 });
 
 gulp.task('lint', function () {
-  return gulp.src(['app.js', 'public/main.js', 'public/modules/**/*.js', 'test/**/*.js'])
+  return gulp.src(['app.js', 'public/main.js', 'public/modules/**/*.js'])
 	.pipe(eslint({
 	  configFile: '.eslintrc.json',
 	}))
 	.pipe(eslint.format())
 	.pipe(eslint.failAfterError());
-});
-
-gulp.task('docs', function(cb){
-	return gulp.src(paths.app.scripts)
-		.pipe(ngdocs.process({
-			html5Mode: false,
-			startPage: '/api'
-		}))
-		.pipe(gulp.dest(paths.build.docs));
 });
 
 // See https://github.com/karma-runner/gulp-karma
@@ -115,67 +102,9 @@ gulp.task('docs', function(cb){
 	  singleRun: true
 	});
 	karma.start();
-});
+}); */
 
-// Clean dist
-gulp.task('clean:dist', function (cb) {
-	del.sync(['./dist']);
-	cb();
-});*/
 
-// Update runtime deps
-gulp.task('deps', function(cb){
-	// main bower.json
-	bower();
-	return gulp.src(paths.app.basePath, {read:false})
-			   .pipe(shell(['jspm install']));
-});
-
-// Depencency cache for SPDY
-gulp.task('depcache', function(){
-	return gulp.src(paths.app.basePath, {read:false})
-		.pipe(shell([
-			'jspm depcache main'
-		]));
-});
-
-// Create a minified bundle.js (and map) and inject it into config.js
-// so System knows which modules should be loaded from it, and copy these
-// files into dist/app.
-// NOTE: ideally you'd operate directly on the files in dist/app *after* the
-// 'files' task, but JSPM currently (6/2015) doesn't have a way to do this,
-// hence the need to do all this in public/ and copy the result to dist/app
-// and then unbundle the stuff in public/.
-gulp.task('bundle', ['depcache'], function () {
-	return gulp.src(paths.app.basePath)
-		.pipe(shell([
-			'jspm bundle main ' + paths.app.basePath + 'bundle.js --inject --minify' +
-			'&& mv ' + paths.app.basePath + 'bundle* ' + paths.build.dist + '/public' +
-			'&& cp ' + paths.app.basePath + 'config.js ' + paths.build.dist + '/public' +
-			'&& jspm unbundle'
-		]));
-});
-
-// Copy production files from public/ to dist/app/
-gulp.task('files', function () {
-	gulp.src([
-		// copy public/
-		'' + paths.app.basePath + '**/*',
-		// except tests and stylesheets from modules/
-		'!' + paths.app.basePath + 'elements.html',
-		'!' + paths.app.basePath + 'modules/**/styles/',
-		'!' + paths.app.basePath + 'modules/**/styles/**'
-	])
-	.pipe(gulp.dest('./dist/public'));
-
-	// Copy node/express stuff
-	gulp.src(['./app.js', './newrelic.js', './package.json'])
-		.pipe(gulp.dest('./dist')) ;
-
-	// Copy the node libraries that we pull in from internal github
-	gulp.src(['./lib/**/*'])
-		.pipe(gulp.dest('./dist/lib')) ;
-});
 
 // Server for convenience. You can accomplish the same thing by
 // typing 'nodemon' (assuming you have it installed globally)
@@ -214,7 +143,7 @@ gulp.task('server', function () {
 // 4) Create a distribution version of the application
 // 4) Add a bundled dependency file to the distribution version of the application
 gulp.task('dist', function(){
-  runSequence('clean:dist','deps','sass', 'docs', 'files', 'vulcanize',  'bundle');
+  runSequence('clean:dist','sass');
 });
 
 // Start a web server, load the app at public/, watch scripts and styles
