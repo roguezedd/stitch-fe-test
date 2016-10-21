@@ -29,7 +29,7 @@ let AppModule = angular.module('app', [
     // here if they type a weird route into the location bar.
     $urlRouterProvider.otherwise(($injector) => {
       var $state = $injector.get('$state');
-      $state.go('product');
+      $state.go('product.detail');
     });
 	}
 ]);
