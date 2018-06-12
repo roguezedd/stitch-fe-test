@@ -6,15 +6,14 @@ export class ProductService {
     this.$http = $http;
   }
 
-  get(id) {
-    return thi
+  get() {
   }
 
-  post(id, data) {
+  post() {
 
   }
 
-  put(id, data) {
+  put() {
 
   }
 
@@ -22,7 +21,7 @@ export class ProductService {
 
   }
 
-  delete(id) {
+  delete() {
 
   }
 

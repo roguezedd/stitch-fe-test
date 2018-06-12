@@ -30,7 +30,7 @@ export class ShopController {
     return this.selectedProduct.id == id;
   }
 
-  closeAlert(i) {
+  closeAlert() {
     this.error = "";
   }
 
