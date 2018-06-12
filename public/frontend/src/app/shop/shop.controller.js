@@ -5,6 +5,8 @@ export class ShopController {
     this.selectedProduct = null;
     this.error = '';
     this.selected = null;
+    this.filter = null;
+    this.filterText = null;
     
     this.$http = $http;
     this.toastr = toastr;
@@ -25,7 +27,7 @@ export class ShopController {
   }
 
   isSelected(id) {
-    return this.selected == id;
+    return this.selectedProduct.id == id;
   }
 
   closeAlert(i) {
