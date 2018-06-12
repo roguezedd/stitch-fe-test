@@ -9,8 +9,12 @@ var debug = require('debug')('stitchapp');
 
 var routes = require('./routes/index');
 var shopify = require('./routes/shopify');
+var cors = require('cors');
 
 var app = express();
+
+// Testing only.
+// app.use(cors())
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -23,7 +27,7 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'public/frontend/dist')));
 
 app.use('/', routes);
 app.use('/shopify', shopify);
