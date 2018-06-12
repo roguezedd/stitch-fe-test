@@ -9,8 +9,12 @@ var debug = require('debug')('stitchapp');
 
 var routes = require('./routes/index');
 var shopify = require('./routes/shopify');
+var cors = require('cors');
 
 var app = express();
+
+// Testing only.
+app.use(cors())
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

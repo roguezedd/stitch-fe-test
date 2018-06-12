@@ -6,6 +6,11 @@ export function routerConfig ($routeProvider) {
       controller: 'ShopController',
       controllerAs: 'main'
     })
+    .when('/products/:id', {
+      templateUrl: 'app/product/product.html',
+      controller: 'ProductController',
+      controllerAs: 'main'
+    })
     .when('/main', {
       templateUrl: 'app/main/main.html',
       controller: 'MainController',

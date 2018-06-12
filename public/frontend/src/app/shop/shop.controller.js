@@ -1,32 +1,35 @@
 export class ShopController {
-  constructor ($timeout, webDevTec, toastr) {
+  constructor ($timeout, $http, webDevTec, toastr) {
     'ngInject';
-
-    this.awesomeThings = [];
-    this.classAnimation = '';
-    this.creationDate = 1528781081418;
+    this.products = [];
+    this.selectedProduct = null;
+    this.error = '';
+    this.selected = null;
+    
+    this.$http = $http;
     this.toastr = toastr;
-
-    this.activate($timeout, webDevTec);
+    this.getData();
   }
 
-  activate($timeout, webDevTec) {
-    this.getWebDevTec(webDevTec);
-    $timeout(() => {
-      this.classAnimation = 'rubberBand';
-    }, 4000);
-  }
-
-  getWebDevTec(webDevTec) {
-    this.awesomeThings = webDevTec.getTec();
-
-    angular.forEach(this.awesomeThings, (awesomeThing) => {
-      awesomeThing.rank = Math.random();
+  getData() {
+    var self = this;
+    this.$http({
+      method: 'GET',
+      url: 'http://localhost:3030/shopify/get?path=/admin/products.json'
+    }).then(function successCallback(response) {
+      self.products = response.data.products;
+      self.selectedProduct = self.products[0];
+    }, function errorCallback(response) {
+      self.error = 'Error: ' + response.statusText + 'with code: ' +response.status;
     });
   }
 
-  showToastr() {
-    this.toastr.info('Fork <a href="https://github.com/Swiip/generator-gulp-angular" target="_blank"><b>generator-gulp-angular</b></a>');
-    this.classAnimation = '';
+  isSelected(id) {
+    return this.selected == id;
   }
+
+  closeAlert(i) {
+    this.error = "";
+  }
+
 }

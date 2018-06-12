@@ -5,6 +5,8 @@ import { routerConfig } from './index.route';
 import { runBlock } from './index.run';
 import { MainController } from './main/main.controller';
 import { ShopController } from './shop/shop.controller';
+import { ProductController } from './product/product.controller';
+import { ProductService } from './product/product.service';
 import { GithubContributorService } from '../app/components/githubContributor/githubContributor.service';
 import { WebDevTecService } from '../app/components/webDevTec/webDevTec.service';
 import { NavbarDirective } from '../app/components/navbar/navbar.directive';
@@ -18,7 +20,9 @@ angular.module('frontend', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', '
   .run(runBlock)
   .service('githubContributor', GithubContributorService)
   .service('webDevTec', WebDevTecService)
+  .service('product', ProductService)
   .controller('MainController', MainController)
   .controller('ShopController', ShopController)
+  .controller('ProductController', ProductController)
   .directive('acmeNavbar', NavbarDirective)
   .directive('acmeMalarkey', MalarkeyDirective);
